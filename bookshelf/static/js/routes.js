@@ -1,0 +1,1 @@
+GET_NEXT_PAGE = "http://localhost:8000/bookshelf/"
