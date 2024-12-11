@@ -1,0 +1,65 @@
+- model: bookshelf.Tag
+  pk: 1
+  fields:
+    TagName: Féminisme Noir
+
+- model: bookshelf.Tag
+  pk: 2
+  fields:
+    TagName: Féminisme Trans
+
+- model: bookshelf.Tag
+  pk: 3
+  fields:
+    TagName: Féminisme Handie
+
+- model: bookshelf.Tag
+  pk: 4
+  fields:
+    TagName: Féminisme Blanc
+
+- model: bookshelf.Tag
+  pk: 5
+  fields:
+    TagName: Queer
+
+- model: bookshelf.Tag
+  pk: 6
+  fields:
+    TagName: Handie
+
+- model: bookshelf.Tag
+  pk: 7
+  fields:
+    TagName: étude de genre
+
+- model: bookshelf.Tag
+  pk: 8
+  fields:
+    TagName: Intersexualité
+
+- model: bookshelf.Tag
+  pk: 9
+  fields:
+    TagName: Postmodernisme
+
+- model: bookshelf.Tag
+  pk: 10
+  fields:
+    TagName: Psycanalyse
+
+- model: bookshelf.Tag
+  pk: 11
+  fields:
+    TagName: Roman
+
+- model: bookshelf.Tag
+  pk: 12
+  fields:
+    TagName: Lesbien
+
+- model: bookshelf.Tag
+  pk: 13
+  fields:
+    TagName : Historique
+

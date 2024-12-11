@@ -1,0 +1,35 @@
+- model: bookshelf.Book_Author_Link
+  pk: 1
+  fields:
+    Author_Key: 1
+    Book_Key: 1
+
+- model: bookshelf.Book_Author_Link
+  pk: 2
+  fields:
+    Author_Key: 2
+    Book_Key: 2
+
+- model: bookshelf.Book_Author_Link
+  pk: 3
+  fields:
+    Author_Key: 3
+    Book_Key: 2
+
+- model: bookshelf.Book_Author_Link
+  pk: 4
+  fields:
+    Author_Key: 4
+    Book_Key: 3
+
+- model: bookshelf.Book_Author_Link
+  pk: 5
+  fields:
+    Author_Key: 5
+    Book_Key: 4
+
+- model: bookshelf.Book_Author_Link
+  pk: 6
+  fields:
+    Author_Key: 6
+    Book_Key: 5

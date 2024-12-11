@@ -1,0 +1,35 @@
+- model: bookshelf.Author
+  pk: 1
+  fields:
+    Name: bell
+    Surname: hooks
+
+- model: bookshelf.Author
+  pk: 2
+  fields:
+    Name: Meg-John
+    Surname: Barker
+
+- model: bookshelf.Author
+  pk: 3
+  fields:
+    Name: Jules
+    Surname: Scheele
+
+- model: bookshelf.Author
+  pk: 4
+  fields:
+    Name: Leslie
+    Surname: Feinberg
+
+- model: bookshelf.Author
+  pk: 5
+  fields:
+    Name: Herculine Abel
+    Surname: Barbin
+
+- model: bookshelf.Author
+  pk: 6
+  fields:
+    Name: Judith
+    Surname: Butler

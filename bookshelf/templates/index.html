@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+    </head>
+
+    <body>
+
+        <div>
+            {% if context %}
+                {% for book in context %}
+
+                    <div>
+                        <img src={% static book.info.Image %}>
+                        <p>{{book.info.Title}} écrit par
+
+                            {% for Auth in book.authors %}
+                                <span>{{Auth}}</span>
+                            {% endfor %}
+
+                        </p>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+        </div>
+    </body>
+</html>
