@@ -13,10 +13,16 @@ def index (req):
         for A in Authors_Linked.values():
 
             One_Author = Author.objects.get (id=A ["Author_Key_id"])
-            Authors_List.append (One_Author.Name + " " + One_Author.Surname + ", ")
+
+            Authors_List.append ({"order_by": One_Author.Surname.lower(),
+                                  "value": One_Author.Name + " " +
+                                           One_Author.Surname + ", "
+                                })
 
         # delete last comma
-        Authors_List[-1] = Authors_List [-1][0:-2]
+        Authors_List[-1]["value"] = Authors_List [-1]["value"][0:-2]
         OverAll["context"].append ({"info": B, "authors": Authors_List})
+
+    OverAll ["context"].sort (key=lambda item: item ["authors"][0]["order_by"])
 
     return render (req, "index.html", OverAll)

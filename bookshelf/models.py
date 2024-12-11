@@ -11,7 +11,7 @@ class Author (models.Model):
 class Book (models.Model):
 
     Image = models.ImageField (default="")
-    Title = models.CharField (max_length=200)
+    Title = models.CharField (max_length=200, unique=True)
     Description = models.TextField (blank=False)
 
     Authors = models.ManyToManyField (Author, through="Book_Author_Link")
