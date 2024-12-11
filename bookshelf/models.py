@@ -5,6 +5,9 @@ class Author (models.Model):
     Name = models.CharField (max_length=200)
     Surname = models.CharField (max_length=200)
 
+    def __str__(self):
+        return self.Name + " " + self.Surname
+
 class Book (models.Model):
 
     Image = models.ImageField (default="")
@@ -13,9 +16,15 @@ class Book (models.Model):
 
     Authors = models.ManyToManyField (Author, through="Book_Author_Link")
 
+    def __str__(self):
+        return self.Title
+
 class Tag (models.Model):
 
     TagName = models.CharField (max_length=200)
+
+    def __str__(self):
+        return self.TagName
 
 class Book_Author_Link (models.Model):
 

@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         {% load static %}
+        <link rel="stylesheet" href="{% static 'index.css' %}" />
     </head>
 
     <body>
 
-        <div>
+        <div class="BookWrapper">
             {% if context %}
                 {% for book in context %}
 
-                    <div>
+                    <div class="Book">
                         <img src={% static book.info.Image %}>
+
                         <p>{{book.info.Title}} écrit par
 
                             {% for Auth in book.authors %}
@@ -24,5 +27,6 @@
                 {% endfor %}
             {% endif %}
         </div>
+
     </body>
 </html>

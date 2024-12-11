@@ -1,0 +1,31 @@
+.BookWrapper {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: auto;
+
+    background-color: lightskyblue;
+}
+
+.Book {
+
+    margin-top: 2%;
+    margin-left: 2.3%;
+
+    flex: 0 0 auto;
+    width: min-content;
+}
+
+.Book > img {
+    width: 220px;
+    height: 330px;
+    object-fit: contain;
+}
+
+.Book > img:hover {
+
+    border: 1em;
+}
+
