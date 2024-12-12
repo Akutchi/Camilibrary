@@ -7,7 +7,7 @@ for quite some time now.
 
 |![home](./doc/visuals/home.png)|
 |:-------------------------:|
-| *visual as of the 11/12/24* |
+| *visual as of the 12/12/24* |
 
 # Run
 

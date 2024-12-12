@@ -68,27 +68,28 @@
     display: inline-block;
     height: 0px;
     width: 200px;
-    font-size: 1.3em;
-    margin-top: -96%;
-    font-family: "Akshar";
+    margin-top: -100%;
+
+    font-size: 1.2em;
+    font-family: Arial;
     font-weight: 400;
 
     text-align: center;
-    overflow-y:scroll;
+    text-wrap: wrap;
+    overflow-y: scroll;
 
     color: #000;
     background-color: white;
 
     opacity: 0;
 
-    transition: opacity 1s;
-    transition: height 1s;
+    transition: 1s;
 }
 
 .RecentCover:hover p {
 
     opacity: 1;
-    height : 185px;
+    height : 180px;
 }
 
 .BookCover {
