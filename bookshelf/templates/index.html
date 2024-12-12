@@ -8,9 +8,37 @@
 
     <body>
 
-        <div class="BookWrapper">
-            {% if context %}
-                {% for book in context %}
+        <div class="RecentWrapper">
+
+            <div class="SectionTitle">
+                <p> Ajoutés récemment <p>
+            </div>
+
+            <div class="Recent">
+            {% if recent %}
+                {% for recent_book in recent %}
+
+                    <div class="Book">
+                        <div class="RecentCover">
+                            <img src={% static recent_book.Image %}>
+                            <p>{{ recent_book.Description }}</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+
+        <div class="Wrapper">
+
+            <div class="SectionTitle">
+                <p> Tout mes livres <p>
+            </div>
+
+            <div class="BookWrapper">
+            {% if page_books %}
+                {% for book in page_books %}
 
                     <div class="Book">
                         <div class="BookCover">
@@ -29,6 +57,7 @@
 
                 {% endfor %}
             {% endif %}
+            </div>
         </div>
 
     </body>

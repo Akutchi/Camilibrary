@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Author (models.Model):
 
@@ -13,6 +14,7 @@ class Book (models.Model):
     Image = models.ImageField (default="")
     Title = models.CharField (max_length=200, unique=True)
     Description = models.TextField (blank=False)
+    Added = models.DateField (default=timezone.now)
 
     Authors = models.ManyToManyField (Author, through="Book_Author_Link")
 

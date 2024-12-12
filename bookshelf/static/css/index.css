@@ -1,6 +1,8 @@
 @import url(https://fonts.bunny.net/css?family=abeezee:400,400i);
+@import url(https://fonts.bunny.net/css?family=akshar:400);
+@import url(https://fonts.bunny.net/css?family=share-tech-mono:400);
 
-.BookWrapper {
+.BookWrapper, .Recent {
 
     display: flex;
     flex-wrap: wrap;
@@ -8,7 +10,24 @@
     overflow-x: auto;
     overflow-y: auto;
 
+    margin-left: 2%;
+    margin-right: 2%;
+
     background-color: lightskyblue;
+}
+
+.Recent {
+    margin-bottom: 2%;
+}
+
+.SectionTitle {
+
+    font-family: 'Share Tech Mono';
+    font-size: 1.5em;
+    font-weight: 400;
+    text-decoration: underline;
+
+    margin-left: 2%;
 }
 
 .Book {
@@ -21,6 +40,55 @@
     width: min-content;
 
     color: rgb(43, 46, 48);
+}
+
+.RecentCover {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.RecentCover img {
+
+    width: 200px;
+    height: 313px;
+    object-fit: cover;
+
+    transition: opacity 1s;
+}
+
+.RecentCover:hover img {
+
+    opacity: 0.4;
+    transition: opacity 1s;
+}
+
+.RecentCover p {
+
+    position: relative;
+    display: inline-block;
+    height: 0px;
+    width: 200px;
+    font-size: 1.3em;
+    margin-top: -96%;
+    font-family: "Akshar";
+    font-weight: 400;
+
+    text-align: center;
+    overflow-y:scroll;
+
+    color: #000;
+    background-color: white;
+
+    opacity: 0;
+
+    transition: opacity 1s;
+    transition: height 1s;
+}
+
+.RecentCover:hover p {
+
+    opacity: 1;
+    height : 185px;
 }
 
 .BookCover {
