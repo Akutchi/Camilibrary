@@ -13,9 +13,12 @@
                 {% for book in context %}
 
                     <div class="Book">
-                        <img src={% static book.info.Image %}>
+                        <div class="BookCover">
+                            <img src={% static book.info.Image %}>
+                        </div>
 
-                        <p>{{book.info.Title}} écrit par
+                        <p class="BookTitle">{{book.info.Title}}</p>
+                        <p class="BookAuthors"> écrit par
 
                             {% for Auth in book.authors %}
                                 <span>{{Auth.value}}</span>
