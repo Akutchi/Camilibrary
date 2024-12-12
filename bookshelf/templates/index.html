@@ -39,10 +39,9 @@
             <div class="BookWrapper">
             {% if page_books %}
                 {% for book in page_books %}
-
                     <div class="Book">
                         <div class="BookCover">
-                            <img src={% static book.info.Image %}>
+                            <a href={% url 'book_page' book.info.pk %}><img src={% static book.info.Image %}></a>
                         </div>
 
                         <p class="BookTitle">{{book.info.Title}}</p>

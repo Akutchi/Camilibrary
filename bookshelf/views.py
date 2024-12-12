@@ -9,7 +9,6 @@ def Get_Books (General_Object):
 
         Authors_Linked = Book_Author_Link.objects.filter (Book_Key=B.pk)
         Authors_List = []
-
         for A in Authors_Linked.values():
 
             One_Author = Author.objects.get (id=A ["Author_Key_id"])
@@ -60,3 +59,7 @@ def offset_index (req, Page_Number):
                                         "page_books": OverAll ["page_books"][Begin_Number:End_Number]
                                     })
 
+
+def book_view (req, Book_Number):
+
+    return render (req, "book.html", {"pk": Book_Number})
