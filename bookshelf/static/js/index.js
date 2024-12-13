@@ -1,31 +1,35 @@
 localStorage ["Tags"] = JSON.stringify({"active": []})
 
+const TagList = document.getElementById ("TagList");
+TagList.classList.toggle ("Right_Blur", true);
+
 function ToogleTag (event) {
 
     clickedTag = event.id;
+    TagObject = document.getElementById (clickedTag);
 
-    if (localStorage ["Tags"] != undefined) {
+    if (localStorage ["Tags"] == undefined) {
 
-        Tags = JSON.parse (localStorage ["Tags"]);
+        localStorage ["Tags"] = JSON.stringify ({"active": [clickedTag]});
+        TagObject.style.backgroundColor = "#d3d3d3";
 
-        if (!Tags ["active"].includes (clickedTag)) {
-            Tags ["active"].push (clickedTag);
-            TagObject = document.getElementById (clickedTag);
-            TagObject.style.backgroundColor = "#d3d3d3";
+        return;
+    }
 
-        } else {
-            Tags ["active"] = Tags ["active"].filter (item => item !== clickedTag);
-            TagObject = document.getElementById (clickedTag);
-            TagObject.style.backgroundColor = "#FFFFFF";
-        }
-        localStorage ["Tags"] = JSON.stringify (Tags);
+    Tags = JSON.parse (localStorage ["Tags"]);
+
+    if (!Tags ["active"].includes (clickedTag)) {
+
+        Tags ["active"].push (clickedTag);
+        TagObject.style.backgroundColor = "#d3d3d3";
 
     } else {
 
-        localStorage ["Tags"] = JSON.stringify ({"active": [clickedTag]})
+        Tags ["active"] = Tags ["active"].filter (item => item !== clickedTag);
+        TagObject.style.backgroundColor = "#FFFFFF";
     }
 
-    console.log (localStorage ["Tags"]);
+    localStorage ["Tags"] = JSON.stringify (Tags);
 
 }
 
@@ -43,6 +47,27 @@ function ClearTags () {
         }
     }
     localStorage ["Tags"] = JSON.stringify ({"active": []});
+}
 
-    console.log (localStorage ["Tags"]);
+function ToogleBlurryEnd () {
+
+    const TagList = document.getElementById ("TagList");
+    const w = TagList.clientWidth;
+    const over = TagList.scrollWidth - w;
+
+    TagList.classList.toggle ("Left_Blur", true);
+    TagList.classList.toggle ("Right_Blur", true);
+
+    if(TagList.scrollLeft == over) {
+
+        TagList.classList.toggle ("Left_Blur", true);
+        TagList.classList.toggle ("Right_Blur", false);
+
+
+    } else if(TagList.scrollLeft == 0) {
+
+        TagList.classList.toggle ("Left_Blur", false);
+        TagList.classList.toggle ("Right_Blur", true);
+
+    }
 }
