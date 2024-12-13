@@ -35,18 +35,19 @@
 }
 
 .Left_Blur {
+
     mask-image: linear-gradient(90deg, transparent 6px, white 66px);
 }
 
 .Right_Blur {
+
     mask-image: linear-gradient(-90deg, transparent 6px, white 66px);
 }
 
 .Middle_Blur {
 
-    mask-image: linear-gradient(transparent 6px, white 66px) left,
-                linear-gradient(transparent 6px, white 66px) right;
-
+    mask-image: linear-gradient(-90deg, transparent 6px, white 66px),
+                linear-gradient(90deg, transparent 6px, white 66px);
 }
 
 #TagList {

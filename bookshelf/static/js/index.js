@@ -55,17 +55,20 @@ function ToogleBlurryEnd () {
     const w = TagList.clientWidth;
     const over = TagList.scrollWidth - w;
 
-    TagList.classList.toggle ("Left_Blur", true);
-    TagList.classList.toggle ("Right_Blur", true);
+    TagList.classList.toggle ("Left_Blur", false);
+    TagList.classList.toggle ("Right_Blur", false);
+    TagList.classList.toggle ("Middle_Blur", true);
 
     if(TagList.scrollLeft == over) {
 
+        TagList.classList.toggle ("Middle_Blur", false);
         TagList.classList.toggle ("Left_Blur", true);
         TagList.classList.toggle ("Right_Blur", false);
 
 
     } else if(TagList.scrollLeft == 0) {
 
+        TagList.classList.toggle ("Middle_Blur", false);
         TagList.classList.toggle ("Left_Blur", false);
         TagList.classList.toggle ("Right_Blur", true);
 
