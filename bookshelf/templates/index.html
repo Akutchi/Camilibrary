@@ -36,6 +36,19 @@
                 <p> Tout mes livres <p>
             </div>
 
+            <div id="TagSystem">
+                <div id="ClearDiv">
+                    <button class="button-54 ClearButton" onclick="ClearTags()"> Effacer tout </button>
+                </div>
+                <div id="TagList">
+                    {% if tags %}
+                        {% for T in tags %}
+                            <button id="{{ T.TagName | cut:" " }}" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
             <div class="BookWrapper">
             {% if page_books %}
                 {% for book in page_books %}
@@ -60,4 +73,6 @@
         </div>
 
     </body>
+
+    <script src="{% static 'js/index.js' %}"></script>
 </html>

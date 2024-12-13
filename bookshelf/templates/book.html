@@ -7,7 +7,36 @@
     </head>
 
     <body>
-        <P> this is book {{ pk }}</p>
+        <div id="BookInfo">
 
+            <div id="ImageDiv">
+                <img src="{% static book_info.Image %}" />
+            </div>
+
+            <div id="InfoDiv">
+
+                <div class="DescriptionBorder">
+                    <p id="Description">{{book_info.Description}}</p>
+                </div>
+
+                <div>
+                    <p id="Authors"> Auteurice.s:</p>
+                    <p id="Names">
+                    {% for Auth in Authors %}
+                        {{Auth.value}}
+                    {% endfor %}
+                    </p>
+                </div>
+                <li id="TagList">
+                    {% for Tag in Tags %}
+                        <button class="Tag" role="button" style="transform: rotate({{ Tag.style.TagRotation}}deg)">{{ Tag.value }}</button>
+                    {% endfor %}
+                </li>
+            </div>
+        </div>
+
+        <div>
+            <p id="Commentary"> Commentaire </p>
+        </div>
     </body>
 </html>
