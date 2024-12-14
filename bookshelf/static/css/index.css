@@ -36,21 +36,33 @@
 
 .Left_Blur {
 
-    mask-image: linear-gradient(90deg, transparent 6px, white 66px);
+    position: absolute;
+    z-index: 1;
+
+    width: 3%;
+    height: 7%;
+    left: 12%;
+
+    background-color: white;
+    mask-image: linear-gradient(to left, transparent 6px, white 66px);
 }
 
 .Right_Blur {
 
-    mask-image: linear-gradient(-90deg, transparent 6px, white 66px);
-}
+    position: absolute;
+    z-index: 1;
 
-.Middle_Blur {
+    width: 5%;
+    height: 7%;
+    left: 58%;
 
-    mask-image: linear-gradient(-90deg, transparent 6px, white 66px),
-                linear-gradient(90deg, transparent 6px, white 66px);
+    background-color: white;
+    mask-image: linear-gradient(to right, transparent 6px, white 66px);
 }
 
 #TagList {
+
+    z-index: 0;
 
     width: 50%;
     height: 50px;
