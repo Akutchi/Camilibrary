@@ -232,21 +232,26 @@
 
 .PageNumber {
 
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    padding: 0.5%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
 
     border: solid black 1.5px;
     box-shadow: 1px 1px 1px gray;
 
     text-decoration: none;
-    font-family: "Abeezee";
+    font-family: "Abeezee", sans-serif;
 
     color: black;
     background-color: white;
 }
 
 .PageNumber:hover {
+
+    box-shadow: 0.5px 0.5px 0.5px gray;
+}
+
+.PageNumber:active {
 
     box-shadow: 0px 0px 0px gray;
 }

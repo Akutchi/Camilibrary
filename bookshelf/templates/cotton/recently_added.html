@@ -1,0 +1,17 @@
+<div class="Recent">
+
+    {% load static %}
+    {% if recent %}
+        {% for recent_book in recent %}
+
+            <div class="Book">
+                <div class="RecentCover">
+                    <img src={% static recent_book.Image %}>
+                    <p>{{ recent_book.Description }}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+</div>

@@ -1,0 +1,26 @@
+<div class="BookWrapper">
+
+    {% load static %}
+
+    {% if books %}
+        {% for book in books %}
+
+            <div class="Book">
+                <div class="BookCover">
+                    <a href={% url 'book_page' book.info.pk %}><img src={% static book.info.Image %}></a>
+                </div>
+
+                <p class="BookTitle">{{book.info.Title}}</p>
+                <p class="BookAuthors"> écrit par
+
+                    {% for Auth in book.authors %}
+                        <span>{{Auth.value}}</span>
+                    {% endfor %}
+
+                </p>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+</div>

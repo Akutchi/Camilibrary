@@ -14,20 +14,7 @@
                 <p> Ajoutés récemment <p>
             </div>
 
-            <div class="Recent">
-            {% if recent %}
-                {% for recent_book in recent %}
-
-                    <div class="Book">
-                        <div class="RecentCover">
-                            <img src={% static recent_book.Image %}>
-                            <p>{{ recent_book.Description }}</p>
-                        </div>
-                    </div>
-
-                {% endfor %}
-            {% endif %}
-            </div>
+            <c-recently-added :recent="recent"></c-recently-added>
         </div>
 
         <div class="Wrapper">
@@ -36,52 +23,9 @@
                 <p> Tout mes livres <p>
             </div>
 
-            <div id="TagSystem">
-                <div id="ClearDiv">
-                    <button class="button-54 ClearButton" onclick="ClearTags()"> Effacer tout </button>
-                </div>
-                <div id="LeftBlurDiv"></div>
-                <div id="TagList" onscroll="ToogleBlurryEnd()">
-                    {% if tags %}
-                        {% for T in tags %}
-                            <button id="{{ T.TagName | cut:" " }}" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div id="RightBlurDiv"></div>
-            </div>
-
-            <div class="BookWrapper">
-            {% if page_books %}
-                {% for book in page_books %}
-                    <div class="Book">
-                        <div class="BookCover">
-                            <a href={% url 'book_page' book.info.pk %}><img src={% static book.info.Image %}></a>
-                        </div>
-
-                        <p class="BookTitle">{{book.info.Title}}</p>
-                        <p class="BookAuthors"> écrit par
-
-                            {% for Auth in book.authors %}
-                                <span>{{Auth.value}}</span>
-                            {% endfor %}
-
-                        </p>
-                    </div>
-
-                {% endfor %}
-            {% endif %}
-            </div>
-            <div id="Pagination">
-            {% for page in pagination.page_list %}
-                {% if page == pagination.current %}
-                    <a class="PageNumber CurrentPage" href={% url 'more_index' page %}>{{ page }}</a>
-                {% else %}
-                    <a class="PageNumber" href={% url 'more_index' page %}>{{ page }}</a>
-                {% endif %}
-            {% endfor %}
-            </div>
-
+            <c-tag-system :tags="tags"></c-tag-system>
+            <c-bookshelf-k :books="page_books"></c-bookshelf-k>
+            <c-pagination-system :pagination="pagination"></c-pagination-system>
         </div>
 
     </body>
