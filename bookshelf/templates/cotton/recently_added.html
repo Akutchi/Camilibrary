@@ -5,10 +5,12 @@
         {% for recent_book in recent %}
 
             <div class="Book">
-                <div class="RecentCover">
-                    <img src={% static recent_book.Image %}>
-                    <p>{{ recent_book.Description }}</p>
-                </div>
+                <a href={% url 'book_page' recent_book.id %}>
+                    <div class="RecentCover">
+                            <img src={% static recent_book.Image %}>
+                        <p>{{ recent_book.Description }}</p>
+                    </div>
+                </a>
             </div>
 
         {% endfor %}

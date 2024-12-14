@@ -7,7 +7,9 @@
 
             <div class="Book">
                 <div class="BookCover">
-                    <a href={% url 'book_page' book.info.pk %}><img src={% static book.info.Image %}></a>
+                    <a href={% url 'book_page' book.info.pk %}>
+                        <img src={% static book.info.Image %}>
+                    </a>
                 </div>
 
                 <p class="BookTitle">{{book.info.Title}}</p>

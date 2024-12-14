@@ -17,7 +17,6 @@ OverAll = {
 Get_Books_With_Authors (OverAll)
 OverAll ["page_books"].sort (key=lambda item: item ["authors"][0]["order_by"])
 
-
 def index (req):
 
     Unbound_Pagination = [p for p in range (1, 4)]
