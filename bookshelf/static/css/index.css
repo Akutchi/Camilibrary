@@ -218,3 +218,45 @@
     font-style: normal;
 }
 
+#Pagination {
+
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+    text-align: center;
+
+    background-color: lightskyblue;
+}
+
+.PageNumber {
+
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    padding: 0.5%;
+
+    border: solid black 1.5px;
+    box-shadow: 1px 1px 1px gray;
+
+    text-decoration: none;
+    font-family: "Abeezee";
+
+    color: black;
+    background-color: white;
+}
+
+.PageNumber:hover {
+
+    box-shadow: 0px 0px 0px gray;
+}
+
+.PageNumber:visited {
+    color: black;
+}
+
+.CurrentPage {
+
+    background-color: lightgray;
+}
+

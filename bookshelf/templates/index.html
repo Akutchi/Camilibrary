@@ -72,7 +72,7 @@
                 {% endfor %}
             {% endif %}
             </div>
-            <div>
+            <div id="Pagination">
             {% for page in pagination.page_list %}
                 {% if page == pagination.current %}
                     <a class="PageNumber CurrentPage" href={% url 'more_index' page %}>{{ page }}</a>
