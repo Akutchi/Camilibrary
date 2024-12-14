@@ -45,6 +45,8 @@
 
     background-color: white;
     mask-image: linear-gradient(to left, transparent 6px, white 66px);
+
+    pointer-events: none;
 }
 
 .Right_Blur {
@@ -58,6 +60,8 @@
 
     background-color: white;
     mask-image: linear-gradient(to right, transparent 6px, white 66px);
+
+    pointer-events: none;
 }
 
 #TagList {
