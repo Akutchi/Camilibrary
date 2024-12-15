@@ -1,1 +1,2 @@
-./db.sqlite3
+./library/__pycache__/*
+./bookshelf/__pycache__/*

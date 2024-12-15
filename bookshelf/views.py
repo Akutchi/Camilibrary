@@ -11,7 +11,7 @@ Pages_Count = int(Books_Count/Books_On_Page)
 
 OverAll = {
             "page_books": [],
-            "recent": Book.objects.order_by ("-Added")[0:4].values(),
+            "recent": Book.objects.order_by ("-Added")[:4].values(),
             "tags": Tag.objects.order_by ("TagName").values(),
         }
 
