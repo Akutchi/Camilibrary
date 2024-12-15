@@ -37,11 +37,11 @@ def index (req):
 
 def offset_index (req, Page_Number):
 
+    if (Page_Number <= 0 or Page_Number > Pages_Count):
+        raise Http404 ("bookshelf not found")
+
     Begin_Number = (Page_Number-1)*Books_On_Page
     End_Number = Page_Number*Books_On_Page
-
-    if (Begin_Number <= 0 or Begin_Number > Books_Count or End_Number > Books_Count):
-        raise Http404 ("bookshelf not found")
 
     Unbound_Pagination = [p for p in range (Page_Number-3, Page_Number+3)]
     Bounded_Pagination = filter(lambda i: False if i < 1 else True,
