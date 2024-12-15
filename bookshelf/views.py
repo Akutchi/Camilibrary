@@ -7,7 +7,12 @@ from .ORM_utils import Get_Authors_For, Get_Tags_For, Get_Books_With_Authors
 
 Books_On_Page = 21
 Books_Count = Book.objects.count()
-Pages_Count = int(Books_Count/Books_On_Page)
+Pages_Count = Books_Count/Books_On_Page
+
+if Pages_Count.is_integer():
+    Pages_Count = int(Pages_Count)
+else:
+    Pages_Count = int(Pages_Count)+1
 
 OverAll = {
             "page_books": [],
@@ -45,7 +50,7 @@ def offset_index (req, Page_Number):
 
     Unbound_Pagination = [p for p in range (Page_Number-3, Page_Number+3)]
     Bounded_Pagination = filter(lambda i: False if i < 1 else True,
-                                filter (lambda i: False if i > Pages_Count+1 else True,
+                                filter (lambda i: False if i > Pages_Count else True,
                                         Unbound_Pagination))
 
     Info = {
