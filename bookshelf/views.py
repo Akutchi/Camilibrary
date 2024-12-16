@@ -63,8 +63,8 @@ def offset_index (req, Page_Number):
                  "pagination": {
                                 "current": Page_Number,
                                 "page_list": [p for p in Pagination],
-                                "first_ellipses": True, #Page_Number >= 4,
-                                "last_ellipses": True #Pages_Count > Pagination_Number and Page_Number < Pages_Count-2
+                                "first_ellipses": Page_Number >= 3,
+                                "last_ellipses": Page_Number <= Pages_Count-3
                                 }
             }
 
