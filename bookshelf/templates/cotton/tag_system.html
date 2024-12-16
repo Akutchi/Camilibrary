@@ -7,18 +7,23 @@
     <div id="ClearDiv">
         <a href={% url 'more_index' 1%} class="button-54 ClearButton" onclick="ClearTags()">Effacer</a>
     </div>
+
     <div id="TagList" onscroll="ToogleBlurryEnd()">
-    <div id="LeftBlurDiv"></div>
-    <div id="RightBlurDiv"></div>
+        <div id="LeftBlurDiv"></div>
+        <div id="RightBlurDiv"></div>
 
         {% if tags %}
             {% for T in tags %}
 
                 {% if query|has_tag:T.TagName %}
-                    <a href="{% url 'more_index' 1 %}{{query|remove_last}}" id="{{ T.TagName | whitespace_underscore }}" style="background-color: rgb(211, 211, 211)" class="button-54"> {{ T.TagName }} </a>
+                    <a href="{% url 'more_index' 1 %}{{query|remove_last}}">
+                        <button style="background-color: rgb(211, 211, 211)" class="button-54"> {{ T.TagName }}</button>
+                    </a>
 
                 {% else %}
-                    <a href="{% url 'more_index' 1 %}{{query}}{{T.TagName}}" id="{{ T.TagName | whitespace_underscore }}" class="button-54"> {{ T.TagName }} </a>
+                    <a href="{% url 'more_index' 1 %}{{query}}{{T.TagName|whitespace_underscore}}">
+                        <button class="button-54">{{ T.TagName }}</button>
+                    </a>
                 {% endif %}
 
             {% endfor %}
