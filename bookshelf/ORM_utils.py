@@ -44,7 +44,34 @@ def Get_Books_With_Authors (General_Object):
 
     return General_Object
 
+def Filter_Book (Book_Obj, filters, index):
+
+    if index == len (filters)-1:
+        return Book_Obj.filter (Tag_Key=filters [-1])
+
+    return Filter_Book(Book_Obj.filter (Tag_Key=filters [index]), filters, index+1)
+
+def Filter_For_Tags (Tags, Every_Books):
+
+    if Tags == None:
+        return Every_Books
+
+    filters_tag = [Tag.objects.get (TagName=t).pk for t in Tags.split(" ")] # Tags in the form of ['XXX YYY ZZZ']
+    General_Object = {"page_books": []}
+    Filtered_Books = Filter_Book (Book_Tag_Link.objects, filters_tag, 0)
+
+    for Book_Link in Filtered_Books:
+
+        B = Book.objects.get (Title=Book_Link.Book_Key)
+        Authors_List = Get_Authors_For (B.pk)
+        General_Object["page_books"].append ({"info": B, "authors": Authors_List})
+
+    return General_Object
+
 def Get_Pagination (Page_Number, Pages_Count):
+
+    if Pages_Count <= 5:
+        return [p for p in range (1, Pages_Count+1)]
 
     if Page_Number <= 3:
         return [1, 2, 3, 4, Pages_Count]

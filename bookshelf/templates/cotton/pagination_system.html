@@ -7,9 +7,9 @@
         {% endif %}
 
         {% if page == pagination.current %}
-            <a class="PageNumber CurrentPage" href={% url 'more_index' page %}>{{ page }}</a>
+            <a class="PageNumber CurrentPage" href="{% url 'more_index' page %}{{ pagination.query }}">{{ page }}</a>
         {% else %}
-            <a class="PageNumber" href={% url 'more_index' page %}>{{ page }}</a>
+            <a class="PageNumber" href="{% url 'more_index' page %}{{ pagination.query }}">{{ page }}</a>
         {% endif %}
 
         {% if forloop.first and pagination.first_ellipses %}

@@ -3,17 +3,10 @@ from django.http import Http404
 
 from .models import Book, Tag
 
-from .ORM_utils import Get_Authors_For, Get_Tags_For, Get_Books_With_Authors, Get_Pagination
+from .ORM_utils import Get_Authors_For, Get_Tags_For, Get_Books_With_Authors, Get_Pagination, Filter_For_Tags
 
 Books_On_Page = 21
-Books_Count = Book.objects.count()
-Pages_Count = Books_Count/Books_On_Page
 Pagination_Number = 5
-
-if Pages_Count.is_integer():
-    Pages_Count = int(Pages_Count)
-else:
-    Pages_Count = int(Pages_Count)+1
 
 OverAll = {
             "page_books": [],
@@ -24,30 +17,53 @@ OverAll = {
 Get_Books_With_Authors (OverAll)
 OverAll ["page_books"].sort (key=lambda item: item ["authors"][0]["order_by"])
 
-def index ():
 
+def index ():
     return redirect ("more_index", Page_Number=1)
 
 
+def Format_Parameters (Tag_List):
+
+    if Tag_List == None:
+        return ""
+
+    Tag_List = Tag_List.split(" ")
+    query = "?filter="+"+".join (Tag_List)
+
+    return query
+
+
 def offset_index (req, Page_Number):
+
+    Tag_List = req.GET.get ("filter")
+    Books = Filter_For_Tags (Tag_List, OverAll)
+
+    Books_Count = len(Books ["page_books"])
+    Pages_Count = Books_Count/Books_On_Page
+
+    if Pages_Count.is_integer():
+        Pages_Count = int(Pages_Count)
+    else:
+        Pages_Count = int(Pages_Count)+1
 
     if (Page_Number <= 0 or Page_Number > Pages_Count):
         raise Http404 ("bookshelf not found")
 
     Offset_Start = (Page_Number-1)*Books_On_Page
     Offset_End = Page_Number*Books_On_Page
-
     Pagination = Get_Pagination (Page_Number, Pages_Count)
+
 
     Info = {
                 "recent": OverAll ["recent"],
-                "page_books": OverAll ["page_books"][Offset_Start:Offset_End],
+                "page_books": Books ["page_books"][Offset_Start:Offset_End],
                 "tags": OverAll ["tags"],
                  "pagination": {
                                 "current": Page_Number,
                                 "page_list": [p for p in Pagination],
                                 "first_ellipses": Page_Number >= 3,
-                                "last_ellipses": Page_Number <= Pages_Count-3
+                                "last_ellipses": Page_Number <= Pages_Count-3,
+                                "query": Format_Parameters (Tag_List)
                                 }
             }
 
@@ -55,6 +71,8 @@ def offset_index (req, Page_Number):
 
 
 def book_view (req, Book_Number):
+
+    Books_Count = Book.objects.count()
 
     if (Book_Number < 1 or Book_Number > Books_Count):
         raise Http404 ("book not found")
