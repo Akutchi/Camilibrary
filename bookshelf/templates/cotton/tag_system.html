@@ -2,15 +2,14 @@
     <div id="ClearDiv">
         <button class="button-54 ClearButton" onclick="ClearTags()"> Effacer tout </button>
     </div>
-    <div id="LeftBlurDiv"></div>
     <div id="TagList" onscroll="ToogleBlurryEnd()">
+    <div id="LeftBlurDiv"></div>
+    <div id="RightBlurDiv"></div>
 
         {% if tags %}
             {% for T in tags %}
                 <button id="{{ T.TagName | cut:" " }}" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
             {% endfor %}
         {% endif %}
-
     </div>
-    <div id="RightBlurDiv"></div>
 </div>

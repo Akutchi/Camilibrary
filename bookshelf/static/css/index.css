@@ -39,9 +39,9 @@
     position: absolute;
     z-index: 1;
 
-    width: 3%;
-    height: 7%;
-    left: 12%;
+    width: 20rem;
+    height: 3rem;
+    left: 0rem;
 
     background-color: white;
     mask-image: linear-gradient(to left, transparent 6px, white 66px);
@@ -54,9 +54,10 @@
     position: absolute;
     z-index: 1;
 
-    width: 5%;
-    height: 7%;
-    left: 58%;
+    width: 8rem;
+    height: 4rem;
+    right: 0rem;
+    bottom: 0rem;
 
     background-color: white;
     mask-image: linear-gradient(to right, transparent 6px, white 66px);
@@ -68,7 +69,7 @@
 
     z-index: 0;
 
-    width: 50%;
+    width: 102.6rem;
     height: 50px;
 
     margin-left: 1%;
@@ -81,6 +82,7 @@
 #ClearDiv {
 
     margin-left: 2%;
+    z-index: 2;
 }
 
 .ClearButton {

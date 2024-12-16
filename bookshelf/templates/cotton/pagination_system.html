@@ -1,11 +1,21 @@
 <div id="Pagination">
 
     {% for page in pagination.page_list %}
+
+        {% if forloop.last and pagination.last_ellipses %}
+            <span>...</span>
+        {% endif %}
+
         {% if page == pagination.current %}
             <a class="PageNumber CurrentPage" href={% url 'more_index' page %}>{{ page }}</a>
         {% else %}
             <a class="PageNumber" href={% url 'more_index' page %}>{{ page }}</a>
         {% endif %}
+
+        {% if forloop.first and pagination.first_ellipses %}
+            <span>...</span>
+        {% endif %}
+
     {% endfor %}
 
 </div>

@@ -43,3 +43,21 @@ def Get_Books_With_Authors (General_Object):
         General_Object["page_books"].append ({"info": B, "authors": Authors_List})
 
     return General_Object
+
+def Get_Pagination (Page_Number, Pages_Count):
+
+    if Page_Number <= 3:
+        return [1, 2, 3, 4, Pages_Count]
+
+    if Page_Number >= Pages_Count-3:
+        return [1, Pages_Count-3, Pages_Count-2, Pages_Count-1, Pages_Count]
+
+    overflow_negative = lambda i: False if i < 1 else True
+    overflow_max = lambda i: False if i > Pages_Count else True
+
+    Unbound_Pagination = list(set((1, *(p for p in range (Page_Number-3, Page_Number+3)), Pages_Count)))
+    Bounded_Pagination = filter(overflow_negative,
+                                filter (overflow_max,
+                                        Unbound_Pagination))
+
+    return Bounded_Pagination
