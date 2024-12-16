@@ -27,7 +27,7 @@ def Format_Parameters (Tag_List):
     if Tag_List == None:
         return ""
 
-    Tag_List = Tag_List.split(" ")
+    Tag_List = [t.replace("-", " ") for t in Tag_List.split(" ")]
     query = "?filter="+"+".join (Tag_List)
 
     return query

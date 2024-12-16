@@ -17,14 +17,14 @@
             <div id="InfoDiv">
 
                 <div class="DescriptionBorder">
-                    <p id="Description">{{book_info.Description}}</p>
+                    <p id="Description">{{ book_info.Description }}</p>
                 </div>
 
                 <div>
                     <p id="Authors"> Auteurice.s:</p>
                     <p id="Names">
                     {% for Auth in Authors %}
-                        {{Auth.value}}
+                        {{ Auth.value }}
                     {% endfor %}
                     </p>
                 </div>

@@ -1,4 +1,7 @@
 <div id="TagSystem">
+
+    {% load extract_tag %}
+
     <div id="ClearDiv">
         <a href={% url 'more_index' 1%} class="button-54 ClearButton" onclick="ClearTags()">Effacer</a>
     </div>
@@ -8,7 +11,13 @@
 
         {% if tags %}
             {% for T in tags %}
-                <button id="{{ T.TagName | cut:" " }}" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
+
+                {% if T.TagName == query|extract_tag %}
+                    <button id="{{ T.TagName | cut:" " }}" style="background-color: rgb(211, 211, 211)" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
+                {% else %}
+                    <button id="{{ T.TagName | cut:" " }}" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
+                {% endif %}
+
             {% endfor %}
         {% endif %}
     </div>

@@ -56,7 +56,9 @@ def Filter_For_Tags (Tags, Every_Books):
     if Tags == None:
         return Every_Books
 
-    filters_tag = [Tag.objects.get (TagName=t).pk for t in Tags.split(" ")] # Tags in the form of ['XXX YYY ZZZ']
+    filters_tag = [Tag.objects.get (TagName=t.replace("-", " ")).pk for t in Tags.split(" ")]
+    # Tags in the form of ['XXX YYY Z-Z-Z']
+
     General_Object = {"page_books": []}
     Filtered_Books = Filter_Book (Book_Tag_Link.objects, filters_tag, 0)
 
