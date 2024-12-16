@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 
 from .models import Book, Tag
@@ -24,26 +24,9 @@ OverAll = {
 Get_Books_With_Authors (OverAll)
 OverAll ["page_books"].sort (key=lambda item: item ["authors"][0]["order_by"])
 
-def index (req):
+def index ():
 
-    Unbound_Pagination = list(set((1, *(p for p in range (2, Pagination_Number)), Pages_Count)))
-    Bounded_Pagination = filter(lambda i: False if i < 1 else True,
-                                filter (lambda i: False if i > Pages_Count else True,
-                                        Unbound_Pagination))
-
-    Info = {
-                "recent": OverAll ["recent"],
-                "page_books": OverAll ["page_books"][0:Books_On_Page],
-                "tags": OverAll ["tags"],
-                "pagination": {
-                                "current": 1,
-                                "page_list": [p for p in Bounded_Pagination],
-                                "first_ellipses": True,
-                                "last_ellipses": True # Pages_Count > Pagination_Number
-                                }
-            }
-
-    return render (req, "index.html", Info)
+    return redirect ("more_index", Page_Number=1)
 
 
 def offset_index (req, Page_Number):
