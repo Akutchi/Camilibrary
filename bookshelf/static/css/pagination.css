@@ -1,0 +1,51 @@
+#Pagination {
+
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+    text-align: center;
+
+    background-color: lightskyblue;
+}
+
+.PageNumber {
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+
+    border: solid black 1.5px;
+    box-shadow: 1px 1px 1px gray;
+
+    text-decoration: none;
+    font-family: "Abeezee", sans-serif;
+
+    color: black;
+    background-color: white;
+}
+
+.PageNumber:hover {
+
+    box-shadow: 0.5px 0.5px 0.5px gray;
+}
+
+.PageNumber:active {
+
+    box-shadow: 0px 0px 0px gray;
+}
+
+.PageNumber:visited {
+    color: black;
+}
+
+.CurrentPage {
+
+    background-color: lightgray;
+}
+
+.Ellipses {
+
+    font-family: 'Abeezee', sans-serif;
+}

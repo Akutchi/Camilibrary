@@ -1,0 +1,49 @@
+.RecentCover {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.RecentCover img {
+
+    width: 200px;
+    height: 313px;
+    object-fit: cover;
+
+    transition: opacity 1s;
+}
+
+.RecentCover:hover img {
+
+    opacity: 0.4;
+    transition: opacity 1s;
+}
+
+.RecentCover p {
+
+    position: relative;
+    display: inline-block;
+    height: 0px;
+    width: 200px;
+    margin-top: -100%;
+
+    font-size: 1.2em;
+    font-family: Arial;
+    font-weight: 400;
+
+    text-align: center;
+    text-wrap: wrap;
+    overflow-y: scroll;
+
+    color: #000;
+    background-color: white;
+
+    opacity: 0;
+
+    transition: 1s;
+}
+
+.RecentCover:hover p {
+
+    opacity: 1;
+    height : 180px;
+}

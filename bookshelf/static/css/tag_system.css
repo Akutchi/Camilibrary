@@ -1,0 +1,92 @@
+#TagSystem {
+    display: flex;
+}
+
+.Left_Blur {
+
+    position: absolute;
+    z-index: 1;
+
+    width: 20rem;
+    height: 3rem;
+    left: 0rem;
+
+    background-color: white;
+    mask-image: linear-gradient(to left, transparent 6px, white 66px);
+
+    pointer-events: none;
+}
+
+.Right_Blur {
+
+    position: absolute;
+    z-index: 1;
+
+    width: 8rem;
+    height: 4rem;
+    right: 0rem;
+    bottom: 0rem;
+
+    background-color: white;
+    mask-image: linear-gradient(to right, transparent 6px, white 66px);
+
+    pointer-events: none;
+}
+
+#TagList {
+
+    z-index: 0;
+
+    width: 102.6rem;
+    height: 50px;
+
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+    overflow: scroll;
+    text-wrap: nowrap;
+}
+
+#ClearDiv {
+
+    margin-left: 2%;
+    z-index: 2;
+}
+
+.ClearButton {
+
+    height: 48%;
+    width: 100%;
+}
+
+/* taken from https://getcssscan.com/css-buttons-examples */
+.button-54 {
+
+    position: relative;
+
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    border: 3px solid;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+
+    padding: 0.25em 0.5em;
+    margin-left: 1%;
+
+    color: #000;
+    background-color: white;
+
+    cursor: pointer;
+}
+
+.button-54:active {
+
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
