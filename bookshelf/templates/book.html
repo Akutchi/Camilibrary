@@ -3,7 +3,7 @@
 
     <head>
         {% load static %}
-        {% load whitespace_dash %}
+        {% load whitespace_underscore %}
         <link rel="stylesheet" href="{% static 'css/book.css' %}" />
     </head>
 
@@ -30,7 +30,7 @@
                 </div>
                 <li id="TagList">
                     {% for Tag in Tags %}
-                        <a href="{% url 'more_index' 1 %}?filter={{ Tag.value|whitespace_dash }}" class="Tag" style="transform: rotate({{ Tag.style.TagRotation }}deg)">{{ Tag.value }}</a>
+                        <a href="{% url 'more_index' 1 %}?filter={{ Tag.value|whitespace_underscore }}" class="Tag" style="transform: rotate({{ Tag.style.TagRotation }}deg)">{{ Tag.value }}</a>
                     {% endfor %}
                 </li>
             </div>

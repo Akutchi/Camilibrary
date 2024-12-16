@@ -1,6 +1,8 @@
 <div id="TagSystem">
 
-    {% load extract_tag %}
+    {% load whitespace_underscore %}
+    {% load has_tag %}
+    {% load remove_last %}
 
     <div id="ClearDiv">
         <a href={% url 'more_index' 1%} class="button-54 ClearButton" onclick="ClearTags()">Effacer</a>
@@ -12,10 +14,11 @@
         {% if tags %}
             {% for T in tags %}
 
-                {% if T.TagName == query|extract_tag %}
-                    <button id="{{ T.TagName | cut:" " }}" style="background-color: rgb(211, 211, 211)" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
+                {% if query|has_tag:T.TagName %}
+                    <a href="{% url 'more_index' 1 %}{{query|remove_last}}" id="{{ T.TagName | whitespace_underscore }}" style="background-color: rgb(211, 211, 211)" class="button-54"> {{ T.TagName }} </a>
+
                 {% else %}
-                    <button id="{{ T.TagName | cut:" " }}" class="button-54" onclick="ToogleTag( {{ T.TagName | cut:" " }} )"> {{ T.TagName }} </button>
+                    <a href="{% url 'more_index' 1 %}{{query}}{{T.TagName}}" id="{{ T.TagName | whitespace_underscore }}" class="button-54"> {{ T.TagName }} </a>
                 {% endif %}
 
             {% endfor %}

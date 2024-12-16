@@ -44,27 +44,28 @@ def Get_Books_With_Authors (General_Object):
 
     return General_Object
 
-def Filter_Book (Book_Obj, filters, index):
+def Filter_Book (Book_Obj, filters):
 
-    if index == len (filters)-1:
-        return Book_Obj.filter (Tag_Key=filters [-1])
+    Result = Book_Obj.filter (Tags__TagName=filters [0])
+    for F in filters [1:]:
 
-    return Filter_Book(Book_Obj.filter (Tag_Key=filters [index]), filters, index+1)
+        Result = Result & Book_Obj.filter (Tags__TagName=F)
+
+    return Result
 
 def Filter_For_Tags (Tags, Every_Books):
 
     if Tags == None:
         return Every_Books
 
-    filters_tag = [Tag.objects.get (TagName=t.replace("-", " ")).pk for t in Tags.split(" ")]
-    # Tags in the form of ['XXX YYY Z-Z-Z']
+    filters_tag = [t.replace("_", " ") for t in Tags.split(" ")]
+    # Tags in the form of ['XXX YYY Z_Z_ZZ']
 
     General_Object = {"page_books": []}
-    Filtered_Books = Filter_Book (Book_Tag_Link.objects, filters_tag, 0)
+    Filtered_Books = Filter_Book (Book.objects, filters_tag)
 
-    for Book_Link in Filtered_Books:
+    for B in Filtered_Books:
 
-        B = Book.objects.get (Title=Book_Link.Book_Key)
         Authors_List = Get_Authors_For (B.pk)
         General_Object["page_books"].append ({"info": B, "authors": Authors_List})
 

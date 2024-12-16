@@ -18,4 +18,8 @@
 
     {% endfor %}
 
+    {% if pagination.current == -1 %}
+        <p>Aucun livre ne correspond à votre recherche</p>
+    {% endif %}
+
 </div>

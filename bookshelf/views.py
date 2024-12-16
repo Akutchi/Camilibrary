@@ -18,17 +18,17 @@ Get_Books_With_Authors (OverAll)
 OverAll ["page_books"].sort (key=lambda item: item ["authors"][0]["order_by"])
 
 
-def index ():
+def index (req):
     return redirect ("more_index", Page_Number=1)
 
 
-def Format_Parameters (Tag_List):
+def Format_Parameters_For_Template (Tag_List):
 
     if Tag_List == None:
-        return ""
+        return "?filter="
 
-    Tag_List = [t.replace("-", " ") for t in Tag_List.split(" ")]
-    query = "?filter="+"+".join (Tag_List)
+    Tag_List = [t.replace("_", " ") for t in Tag_List.split(" ")]
+    query = "?filter="+"+".join (Tag_List)+"+"
 
     return query
 
@@ -37,6 +37,18 @@ def offset_index (req, Page_Number):
 
     Tag_List = req.GET.get ("filter")
     Books = Filter_For_Tags (Tag_List, OverAll)
+
+    if Books ["page_books"] == []:
+        return render (req, "index.html", {
+                                        "recent": OverAll ["recent"],
+                                        "page_books": [],
+                                        "tags": OverAll ["tags"],
+                                        "pagination": {
+                                                        "current": -1,
+                                                        "query": Format_Parameters_For_Template (Tag_List)
+
+                                        }
+                                    })
 
     Books_Count = len(Books ["page_books"])
     Pages_Count = Books_Count/Books_On_Page
@@ -63,7 +75,7 @@ def offset_index (req, Page_Number):
                                 "page_list": [p for p in Pagination],
                                 "first_ellipses": Page_Number >= 3,
                                 "last_ellipses": Page_Number <= Pages_Count-3,
-                                "query": Format_Parameters (Tag_List)
+                                "query": Format_Parameters_For_Template (Tag_List)
                                 }
             }
 
