@@ -1,30 +1,24 @@
 function Move (event) {
 
-    let dx = 0;
-    if (event.id == "LeftArrow") {
-        dx = -100;
-
-    } else if (event.id == "RightArrow") {
-        dx = 100;
-    }
-
     const TagList = document.getElementById ("TagList");
     const w = TagList.clientWidth;
     const over = TagList.scrollWidth - w;
 
-    if(TagList.scrollLeft+dx < over) {
-        TagList.scrollLeft += dx;
+    let dx_obj = {}
+    if (event.id == "LeftArrow") {
+        dx_obj = {"comp": x => {return x > 0}, "dx": -100, "born": 0};
 
-    } else {
-        TagList.scrollLeft = over;
-
+    } else if (event.id == "RightArrow") {
+        dx_obj = {"comp": x => {return x < over}, "dx": 100, "born": over};
     }
 
-    if(TagList.scrollLeft+dx > 0) {
-        TagList.scrollLeft += dx;
+    Has_Not_Achieved_Born = dx_obj ["comp"] (TagList.scrollLeft += dx_obj ["dx"]);
+
+    if(Has_Not_Achieved_Born) {
+        TagList.scrollLeft += dx_obj ["dx"];
 
     } else {
-        TagList.scrollLeft = 0;
+        TagList.scrollLeft = dx_obj ["born"];
     }
 }
 
