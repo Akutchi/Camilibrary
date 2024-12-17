@@ -9,6 +9,7 @@
 #TagList {
 
     height: 50px;
+    margin-left: 1rem;
 
     overflow: scroll;
     text-wrap: nowrap;
