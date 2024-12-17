@@ -1,5 +1,7 @@
 <div id="Pagination">
 
+    {% load clean_query %}
+
     {% for page in pagination.page_list %}
 
         {% if forloop.last and pagination.last_ellipses %}
@@ -7,9 +9,9 @@
         {% endif %}
 
         {% if page == pagination.current %}
-            <a class="PageNumber CurrentPage" href="{% url 'more_index' page %}{{ pagination.query }}">{{ page }}</a>
+            <a class="PageNumber CurrentPage" href="{% url 'more_index' page %}{{ pagination.query|clean_query }}">{{ page }}</a>
         {% else %}
-            <a class="PageNumber" href="{% url 'more_index' page %}{{ pagination.query }}">{{ page }}</a>
+            <a class="PageNumber" href="{% url 'more_index' page %}{{ pagination.query|clean_query }}">{{ page }}</a>
         {% endif %}
 
         {% if forloop.first and pagination.first_ellipses %}

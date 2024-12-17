@@ -3,5 +3,5 @@ from django import template
 register = template.Library()
 
 @register.filter
-def whitespace_underscore (value):
-    return value.replace (" ", "_")
+def whitespace_character (value, char):
+    return value.replace (" ", char)

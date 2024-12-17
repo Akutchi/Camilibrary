@@ -58,7 +58,7 @@ def Filter_For_Tags (Tags, Every_Books):
     if Tags == None:
         return Every_Books
 
-    filters_tag = [t.replace("_", " ") for t in Tags.split(" ")]
+    filters_tag = [t.replace("-", " ") for t in Tags.split(" ")]
     # Tags in the form of ['XXX YYY Z_Z_ZZ']
 
     General_Object = {"page_books": []}

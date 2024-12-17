@@ -24,11 +24,13 @@ def index (req):
 
 def Format_Parameters_For_Template (Tag_List):
 
+    print(Tag_List)
+
     if Tag_List == None:
         return "?filter="
 
-    Tag_List = [t.replace("_", " ") for t in Tag_List.split(" ")]
-    query = "?filter="+"+".join (Tag_List)+"+"
+    Tag_List = [t.replace(" ", "-") for t in Tag_List.split(" ")]
+    query = "?filter="+"+".join (Tag_List)
 
     return query
 

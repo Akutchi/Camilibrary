@@ -1,8 +1,6 @@
 <div id="TagSystem">
 
-    {% load whitespace_underscore %}
-    {% load has_tag %}
-    {% load remove_last %}
+    {% load whitespace_character has_tag remove_last not_empty_add %}
 
     <div id="ClearDiv">
         <a href={% url 'more_index' 1%} class="button-54 ClearButton" onclick="ClearTags()">Effacer</a>
@@ -21,7 +19,7 @@
                     </a>
 
                 {% else %}
-                    <a href="{% url 'more_index' 1 %}{{query}}{{T.TagName|whitespace_underscore}}">
+                    <a href="{% url 'more_index' 1 %}{{ query|not_empty_add:"+" }}{{ T.TagName|whitespace_character:"-" }}">
                         <button class="button-54">{{ T.TagName }}</button>
                     </a>
                 {% endif %}

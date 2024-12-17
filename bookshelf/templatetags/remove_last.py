@@ -9,7 +9,7 @@ def remove_last (query):
 
     #  If query is of form www.camilibrary.fr/?filter=
     #  This may happen when deselecting every tag without clicking on "effacer"
-    if len(query_list [:-2]) == 0:
+    if len(query_list [:-1]) == 0:
         return ""
 
-    return "?filter="+"+".join (query_list [:-2])
+    return "?filter="+"+".join (query_list [:-1])
