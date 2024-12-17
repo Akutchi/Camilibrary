@@ -1,2 +1,4 @@
 ./library/__pycache__/*
 ./bookshelf/__pycache__/*
+./db.sqlite3
+./bookshelf/static/images/*
