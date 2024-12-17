@@ -1,40 +1,26 @@
 #TagSystem {
 
     display: flex;
+    margin-left: 2.2rem;
     margin-right: 2.8rem;
 }
 
 
 #TagList {
 
-    z-index: 0;
-
-    width: 102.6rem;
     height: 50px;
-
-    margin-left: 1rem;
-    margin-right: 1rem;
 
     overflow: scroll;
     text-wrap: nowrap;
 }
 
-#ClearDiv {
-
-    margin-left: 2%;
-    z-index: 2;
-}
-
 .ClearButton {
 
-    height: 48%;
-    width: 100%;
+    height: 2rem;
 }
 
 /* taken from https://getcssscan.com/css-buttons-examples */
 .button-54 {
-
-    position: relative;
 
     font-family: "Open Sans", sans-serif;
     font-size: 16px;

@@ -2,9 +2,9 @@
 
     {% load whitespace_character has_tag remove_last not_empty_add %}
 
-    <div id="ClearDiv">
-        <a href={% url 'more_index' 1%} class="button-54 ClearButton" onclick="ClearTags()">Effacer</a>
-    </div>
+    <a href={% url 'more_index' 1%}>
+        <button class="button-54 ClearButton" onclick="ClearTags()">Effacer</button>
+    </a>
 
     <button id="LeftArrow" class="button-54 NaviButton" onclick="Move(LeftArrow)">&lt;</button>
 
