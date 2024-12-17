@@ -6,9 +6,9 @@
         <a href={% url 'more_index' 1%} class="button-54 ClearButton" onclick="ClearTags()">Effacer</a>
     </div>
 
-    <div id="TagList" onscroll="ToogleBlurryEnd()">
-        <div id="LeftBlurDiv"></div>
-        <div id="RightBlurDiv"></div>
+    <button id="LeftArrow" class="button-54 NaviButton" onclick="Move(LeftArrow)">&lt;</button>
+
+    <div id="TagList">
 
         {% if tags %}
             {% for T in tags %}
@@ -27,4 +27,7 @@
             {% endfor %}
         {% endif %}
     </div>
+
+    <button id="RightArrow" class="button-54 NaviButton" onclick="Move(RightArrow)">&gt;</button>
+
 </div>

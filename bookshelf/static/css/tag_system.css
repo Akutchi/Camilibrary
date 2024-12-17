@@ -1,37 +1,9 @@
 #TagSystem {
+
     display: flex;
+    margin-right: 2.8rem;
 }
 
-.Left_Blur {
-
-    position: absolute;
-    z-index: 1;
-
-    width: 15rem;
-    height: 3rem;
-    left: 0rem;
-
-    background-color: white;
-    mask-image: linear-gradient(to left, transparent 6px, white 66px);
-
-    pointer-events: none;
-}
-
-.Right_Blur {
-
-    position: absolute;
-    z-index: 1;
-
-    width: 8rem;
-    height: 4rem;
-    right: 0rem;
-    bottom: 0rem;
-
-    background-color: white;
-    mask-image: linear-gradient(to right, transparent 6px, white 66px);
-
-    pointer-events: none;
-}
 
 #TagList {
 
@@ -40,7 +12,8 @@
     width: 102.6rem;
     height: 50px;
 
-    margin-left: 1%;
+    margin-left: 1rem;
+    margin-right: 1rem;
 
     overflow: scroll;
     text-wrap: nowrap;
@@ -88,4 +61,9 @@
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
+}
+
+.NaviButton {
+
+    height: 2.1rem;
 }
