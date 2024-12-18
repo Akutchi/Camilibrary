@@ -2,21 +2,26 @@ from .models import Book, Book_Author_Link, Book_Tag_Link, Author, Tag
 
 import random as rnd
 
-def Get_Authors_For (Book_Primary_Key):
+def Get_Authors_For (Book_Primary_Key, Cut_Author_List_With=None):
 
     Authors_Linked = Book_Author_Link.objects.filter (Book_Key=Book_Primary_Key).values()
     Authors_List = []
     for A in Authors_Linked:
 
         One_Author = Author.objects.get (id=A ["Author_Key_id"])
+        Name =  One_Author.Name if One_Author.Name != "." else ""
 
         Authors_List.append ({"order_by": One_Author.Surname.lower(),
-                                "value": One_Author.Name + " " +
+                                "value": Name + " " +
                                         One_Author.Surname + ", "
                             })
 
     Authors_List.sort (key=lambda item: item ["order_by"])
     Authors_List[-1]["value"] = Authors_List [-1]["value"][0:-2]  #  delete last comma
+
+    if Cut_Author_List_With != None and len(Authors_List) > 3:
+        Authors_List = Authors_List [0:3]
+        Authors_List.append ({"value": "etc."})
 
     return Authors_List
 
@@ -35,11 +40,11 @@ def Get_Tags_For (Book_Primary_Key):
 
     return Tag_List
 
-def Get_Books_With_Authors (General_Object):
+def Get_Books_With_Authors (General_Object, Cut_Author_List_With):
 
     for B in Book.objects.all():
 
-        Authors_List = Get_Authors_For (B.pk)
+        Authors_List = Get_Authors_For (B.pk, Cut_Author_List_With)
         General_Object["page_books"].append ({"info": B, "authors": Authors_List})
 
     return General_Object

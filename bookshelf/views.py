@@ -14,7 +14,7 @@ OverAll = {
             "tags": Tag.objects.order_by ("TagName").values(),
         }
 
-Get_Books_With_Authors (OverAll)
+Get_Books_With_Authors (OverAll, Cut_Author_List_With="etc.")
 OverAll ["page_books"].sort (key=lambda item: item ["authors"][0]["order_by"])
 
 
