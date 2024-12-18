@@ -23,7 +23,7 @@
 
 .SectionTitle {
 
-    font-family: 'Share Tech Mono';
+    font-family: 'Share Tech Mono', sans-serif;
     font-size: 1.5em;
     font-weight: 400;
     text-decoration: underline;

@@ -1,3 +1,5 @@
+@import url(https://fonts.bunny.net/css?family=share-tech-mono:400);
+
 nav {
 
     position: fixed;
@@ -11,17 +13,16 @@ nav {
 
 #menu {
 
-    z-index: 0;
+    display: flex;
+    align-items: center;
+    text-justify: center;
 
     width: 0rem;
     visibility: collapse;
 
-    display: flex;
-    align-items: center;
-
-    border-top: 0.5px solid black;
-    border-left: 0.5px solid black;
-    border-bottom: 0.5px solid black;
+    border-top: 0.5px solid lightgray;
+    border-left: 0.5px solid lightgray;
+    border-bottom: 0.5px solid gray;
 
     background-color: lightskyblue;
 }
@@ -31,20 +32,20 @@ nav {
     background-color: lightskyblue;
 }
 
-#open:active ~ #menu {
-
-    width: 7rem;
-    visibility: visible;
-
-    transition: visibility 1s;
-}
-
 #menu > a {
 
+    margin-left: 0.5rem;
+    margin-right: 0.3rem;
+
+    font-family: 'Share Tech Mono', sans-serif;
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
     text-decoration: none;
+    text-transform: uppercase;
+
     color: black;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
 }
 
 #menu > a:active {
