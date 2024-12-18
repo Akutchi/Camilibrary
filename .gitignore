@@ -2,4 +2,8 @@
 ./bookshelf/__pycache__/*
 ./db.sqlite3
 ./bookshelf/static/*.jpg
-./bookshelf/static/*.txt
+./bookshelf/static/*.jpeg
+./bookshelf/static/*.png
+./bookshelf/static/*.webp
+./bookshelf/static/txt/
+./transfert.sh

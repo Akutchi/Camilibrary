@@ -26,7 +26,7 @@ function ToggleMenu () {
 
     const Menu = document.getElementById ("menu");
 
-    if (Menu.style.width == "0rem") {
+    if (Menu.style.width == "0rem" || Menu.style.width == "") {
         Menu.style.width = "7rem";
         Menu.style.visibility = "visible";
 
