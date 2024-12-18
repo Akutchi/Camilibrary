@@ -10,7 +10,7 @@ Pagination_Number = 5
 
 OverAll = {
             "page_books": [],
-            "recent": Book.objects.order_by ("-Added")[:4].values(),
+            "recent": Book.objects.order_by ("-Added").order_by ("-id")[:4].values(),
             "tags": Tag.objects.order_by ("TagName").values(),
         }
 
