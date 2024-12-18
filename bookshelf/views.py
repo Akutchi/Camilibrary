@@ -104,5 +104,13 @@ def book_view (req, Book_Number):
 def about (req):
 
     BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-    yuri_list = open (BASE_PATH+"/static/txt/Liste_yuri.txt", "r").read()
+    PATH = BASE_PATH+"/static/txt/Liste_yuri.txt"
+
+    if not os.path.exists(PATH):
+        print ('File does not exist')
+        return render (req, 'about.html', {"yuri_list": "File not found, rip"})
+
+    yuri_list = open (PATH, "r").read()
     return render (req, 'about.html', {"yuri_list": yuri_list})
+
+
