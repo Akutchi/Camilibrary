@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render, redirect
 from django.http import Http404
 
@@ -98,3 +100,9 @@ def book_view (req, Book_Number):
     Info = {"book_info": Book_Obj, "Authors": Authors, "Tags": Tags}
 
     return render (req, "book.html", Info)
+
+def about (req):
+
+    BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+    yuri_list = open (BASE_PATH+"/static/txt/Liste_yuri.txt", "r").read()
+    return render (req, 'about.html', {"yuri_list": yuri_list})

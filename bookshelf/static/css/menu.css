@@ -1,0 +1,54 @@
+nav {
+
+    position: fixed;
+    display: flex;
+
+    top: 1rem;
+    right: -1rem;
+
+    margin: 0rem 2.2rem 0rem 1rem;
+}
+
+#menu {
+
+    z-index: 0;
+
+    width: 0rem;
+    visibility: collapse;
+
+    display: flex;
+    align-items: center;
+
+    border-top: 0.5px solid black;
+    border-left: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+
+    background-color: lightskyblue;
+}
+
+#open {
+    padding: 0.6rem 0.5rem 0.5rem 0.5rem;
+    background-color: lightskyblue;
+}
+
+#open:active ~ #menu {
+
+    width: 7rem;
+    visibility: visible;
+
+    transition: visibility 1s;
+}
+
+#menu > a {
+
+    text-decoration: none;
+    color: black;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+#menu > a:active {
+
+    text-decoration: none;
+    color: black;
+}

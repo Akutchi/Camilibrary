@@ -22,3 +22,16 @@ function Move (event) {
     }
 }
 
+function ToggleMenu () {
+
+    const Menu = document.getElementById ("menu");
+
+    if (Menu.style.width == "0rem") {
+        Menu.style.width = "7rem";
+        Menu.style.visibility = "visible";
+
+    } else {
+        Menu.style.width = "0rem";
+        Menu.style.visibility = "hidden";
+    }
+}

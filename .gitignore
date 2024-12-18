@@ -2,3 +2,4 @@
 ./bookshelf/__pycache__/*
 ./db.sqlite3
 ./bookshelf/static/*.jpg
+./bookshelf/static/*.txt
