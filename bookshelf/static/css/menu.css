@@ -5,6 +5,8 @@ nav {
     position: fixed;
     display: flex;
 
+    z-index: 2;
+
     top: 1rem;
     right: -1rem;
 
