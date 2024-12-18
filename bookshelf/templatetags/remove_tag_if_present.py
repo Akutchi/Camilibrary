@@ -16,6 +16,5 @@ def remove_tag_if_present (query, value):
 
     if Need_Removal:
         query_list.remove (value)
-        print(query_list)
 
     return "?filter="+"+".join (query_list)

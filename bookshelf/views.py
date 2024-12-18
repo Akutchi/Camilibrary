@@ -5,12 +5,20 @@ from django.http import Http404
 
 from .models import Book, Tag
 
-from .ORM_utils import Get_Authors_For, Get_Tags_For, Get_Books_With_Authors, Get_Pagination, Filter_For_Tags
+from .ORM_utils import Extract_Authors, Extract_Tags, Get_Books_With_Authors, Get_Pagination, Filter_Books_With
 
 Books_On_Page = 21
 Pagination_Number = 5
 
+#  I litterally prefetched the databse in memory because, in my mind, the
+#  function Filter_Books_With in offset_index will be called numerous times :
+#  each time we access camilibrary.fr/X/(Filters).
+#
+#  This is potentially much more than book_view that also use this prefetch)
+#  and thus I find it inefficient to call it everytime.
+
 OverAll = {
+            "prefetched": Book.objects.prefetch_related ("Tags").prefetch_related ("Authors").all(),
             "page_books": [],
             "recent": Book.objects.order_by ("-Added").order_by ("-id")[:4].values(),
             "tags": Tag.objects.order_by ("TagName").values(),
@@ -26,8 +34,6 @@ def index (req):
 
 def Format_Parameters_For_Template (Tag_List):
 
-    print(Tag_List)
-
     if Tag_List == None:
         return "?filter="
 
@@ -40,7 +46,7 @@ def Format_Parameters_For_Template (Tag_List):
 def offset_index (req, Page_Number):
 
     Tag_List = req.GET.get ("filter")
-    Books = Filter_For_Tags (Tag_List, OverAll)
+    Books = Filter_Books_With (Tag_List, OverAll)
 
     if Books ["page_books"] == []:
         return render (req, "index.html", {
@@ -89,13 +95,12 @@ def offset_index (req, Page_Number):
 def book_view (req, Book_Number):
 
     Books_Count = Book.objects.count()
-
     if (Book_Number < 1 or Book_Number > Books_Count):
         raise Http404 ("book not found")
 
-    Book_Obj = Book.objects.get (pk=Book_Number)
-    Authors = Get_Authors_For (Book_Number)
-    Tags = Get_Tags_For (Book_Number)
+    Book_Obj = Book.objects.prefetch_related ("Tags").prefetch_related ("Authors").get (pk=Book_Number)
+    Authors = Extract_Authors (Book_Obj)
+    Tags = Extract_Tags (Book_Obj)
 
     Info = {"book_info": Book_Obj, "Authors": Authors, "Tags": Tags}
 
