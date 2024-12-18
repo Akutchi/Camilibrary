@@ -1,6 +1,6 @@
 <div id="TagSystem">
 
-    {% load whitespace_character has_tag remove_last not_empty_add %}
+    {% load whitespace_character has_tag remove_tag not_empty_add %}
 
     <a href={% url 'more_index' 1%}>
         <button class="button-54 ClearButton" onclick="ClearTags()">Effacer</button>
@@ -14,7 +14,7 @@
             {% for T in tags %}
 
                 {% if query|has_tag:T.TagName %}
-                    <a href="{% url 'more_index' 1 %}{{query|remove_last}}">
+                    <a href="{% url 'more_index' 1 %}{{query|remove_tag:T.TagName}}">
                         <button style="background-color: rgb(211, 211, 211)" class="button-54"> {{ T.TagName }}</button>
                     </a>
 

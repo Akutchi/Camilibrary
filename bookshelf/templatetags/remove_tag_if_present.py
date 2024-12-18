@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 @register.filter
-def remove_last (query):
+def remove_tag_if_present (query, value):
 
     query_list = query.split ("=")[1].split ("+")
 
@@ -12,4 +12,10 @@ def remove_last (query):
     if len(query_list [:-1]) == 0:
         return ""
 
-    return "?filter="+"+".join (query_list [:-1])
+    Need_Removal = query_list.count (value) == 1
+
+    if Need_Removal:
+        query_list.remove (value)
+        print(query_list)
+
+    return "?filter="+"+".join (query_list)
