@@ -5,6 +5,7 @@ register = template.Library()
 @register.filter
 def remove_tag_if_present (query, value):
 
+    value = value.replace (" ", "-")
     query_list = query.split ("=")[1].split ("+")
 
     #  If query is of form www.camilibrary.fr/?filter=
