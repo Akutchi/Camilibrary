@@ -70,7 +70,7 @@ def Filter_Books_With (Tags, Every_Books):
         Book_Tags = [T.TagName for T in B.Tags.all()]
         if Book_Has_Filters (Book_Tags, Filters):
 
-            Authors_List = Extract_Authors (B)
+            Authors_List = Extract_Authors (B, "etc.")
             General_Object["page_books"].append ({"info": B, "authors": Authors_List})
 
     return General_Object
