@@ -125,3 +125,24 @@ img {
   bottom: 2px;
   left: 2px;
 }
+
+.DescriptionBorderComment {
+
+    margin: 0rem 25rem 0rem 25rem;
+    padding: 5rem 5rem 5rem 5rem;
+
+    --thickness: 3px;   /* border thickness */
+    --squishing: .4em;
+    --shift: calc(100% - var(--thickness) - 2*var(--squishing));
+
+    --top_left: conic-gradient(from 90deg at var(--thickness) var(--thickness),#0000 90deg,var(--color) 0);
+    --right: var(--squishing)/var(--shift);
+    --bottom: var(--shift);
+
+    background: var(--top_left) var(--squishing) var(--right) var(--bottom);
+
+    --color: #373B44;
+    color: var(--color);
+
+    background-color: white;
+}

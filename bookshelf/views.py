@@ -2,11 +2,13 @@ import os
 
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django import template
 
 from .models import Book, Tag
 
 from .ORM_utils import Extract_Authors, Extract_Tags, Get_Books_With_Authors, Get_Pagination, Filter_Books_With
 
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 Books_On_Page = 21
 Pagination_Number = 5
 
@@ -104,11 +106,20 @@ def book_view (req, Book_Number):
 
     Info = {"book_info": Book_Obj, "Authors": Authors, "Tags": Tags}
 
+    PATH = BASE_PATH+"/static/txt/"+Book_Obj.Image.name.split (".") [0]+".html"
+
+    if not os.path.exists(PATH):
+        print ('File does not exist')
+        Info ["CommentaryText"] = ""
+
+    else:
+        templ = open (PATH, "r").read()
+        Info ["CommentaryText"] = templ
+
     return render (req, "book.html", Info)
 
 def about (req):
 
-    BASE_PATH = os.path.dirname(os.path.abspath(__file__))
     PATH = BASE_PATH+"/static/txt/Liste_yuri.txt"
 
     if not os.path.exists(PATH):

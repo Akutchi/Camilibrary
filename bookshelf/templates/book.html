@@ -2,6 +2,9 @@
 <html>
 
     <head>
+
+        <title> Camilibrary - {{ book_info.Title }} </title>
+
         {% load static %}
         {% load whitespace_character %}
         <link rel="stylesheet" href="{% static 'css/book.css' %}" />
@@ -43,6 +46,9 @@
 
         <div>
             <p id="Commentary"> Commentaire </p>
+            {{ CommentaryText | safe }}
         </div>
     </body>
+    <script src="{% static 'js/index.js' %}"></script>
+</html>
 </html>
