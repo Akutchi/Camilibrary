@@ -90,7 +90,7 @@ def Get_Pagination (Page_Number, Pages_Count):
     overflow_negative = lambda i: False if i < 1 else True
     overflow_max = lambda i: False if i > Pages_Count else True
 
-    Unbound_Pagination = list(set((1, *(p for p in range (Page_Number-3, Page_Number+3)), Pages_Count)))
+    Unbound_Pagination = list(set((1, *(p for p in range (Page_Number-1, Page_Number+2)), Pages_Count)))
     Bounded_Pagination = filter(overflow_negative,
                                 filter (overflow_max,
                                         Unbound_Pagination))
