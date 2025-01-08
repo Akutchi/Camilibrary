@@ -15,7 +15,9 @@ class MyModelAdmin(admin.ModelAdmin):
 class MyModelAdmin(admin.ModelAdmin):
     ordering = [F('TagName').asc(nulls_last=True)]
 
-admin.site.register (Book_Author_Link)
+@admin.register (Book_Author_Link)
+class MyModelAdmin(admin.ModelAdmin):
+    ordering = [F('Book_Key')]
 
 @admin.register (Book_Tag_Link)
 class MyModelAdmin(admin.ModelAdmin):

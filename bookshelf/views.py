@@ -97,7 +97,7 @@ def offset_index (req, Page_Number):
 def book_view (req, Book_Number):
 
     Books_Count = Book.objects.count()
-    if (Book_Number < 1 or Book_Number > Books_Count):
+    if (Book_Number < 1 or Book_Number-1 > Books_Count):
         raise Http404 ("book not found")
 
     Book_Obj = Book.objects.prefetch_related ("Tags").prefetch_related ("Authors").get (pk=Book_Number)
