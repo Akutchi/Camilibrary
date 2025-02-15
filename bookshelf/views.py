@@ -1,8 +1,7 @@
 import os
 
 from django.shortcuts import render, redirect
-from django.http import Http404
-from django import template
+from django.http import Http404, JsonResponse
 
 from .models import Book, Tag
 
@@ -16,8 +15,10 @@ Pagination_Number = 5
 #  function Filter_Books_With in offset_index will be called numerous times :
 #  each time we access camilibrary.fr/X/(Filters).
 #
-#  This is potentially much more than book_view that also use this prefetch)
+#  This is potentially much more than book_view (that also use this prefetch)
 #  and thus I find it inefficient to call it everytime.
+#
+# TODO : create a cache system.
 
 OverAll = {
             "prefetched": Book.objects.prefetch_related ("Tags").prefetch_related ("Authors").all(),
@@ -93,6 +94,10 @@ def offset_index (req, Page_Number):
 
     return render (req, "index.html", Info)
 
+def search_view (req) :
+
+    placeholder = {"title": "title 1", "image":Book.objects.get (id=1).Image.name}
+    return JsonResponse ({"info" : [placeholder, placeholder]})
 
 def book_view (req, Book_Number):
 
@@ -106,7 +111,7 @@ def book_view (req, Book_Number):
 
     Info = {"book_info": Book_Obj, "Authors": Authors, "Tags": Tags}
 
-    PATH = BASE_PATH+"/static/txt/"+Book_Obj.Image.name.split (".") [0]+".html"
+    PATH = BASE_PATH+"/static/txt/"+Book_Obj.Image.name.split (".") [0].lower ()+".html"
 
     if not os.path.exists(PATH):
         print ('File does not exist')

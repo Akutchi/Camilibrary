@@ -5,6 +5,8 @@
 
 .BookWrapper, .Recent {
 
+    z-index: 0;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,6 +17,29 @@
     margin-right: 2%;
 
     background-color: lightskyblue;
+}
+
+#SearchWrapper {
+
+    z-index: 1;
+
+    margin-top: 0.5em;
+    padding : 0.5em;
+
+    border: 1px solid black;
+}
+
+#SearchWrapper > div > div {
+
+    display: flex;
+    column-gap: 1em;
+}
+
+#SearchWrapper > div > div > img {
+
+    width: 100px;
+    height: 155.5px;
+    object-fit: cover;
 }
 
 .Recent {

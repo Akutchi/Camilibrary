@@ -19,6 +19,13 @@ def Extract_Authors (Book, Cut_Author_List_With=None):
                             })
 
     Authors_List.sort (key=lambda item: item ["order_by"])
+
+    if Authors_List == []:
+        Authors_List = [{
+                            "order_by": "",
+                            "value": " "
+                        }]
+
     Authors_List[-1]["value"] = Authors_List [-1]["value"][0:-2]  #  delete last comma
 
     if Authors_List_Too_Long (Authors_List, ellipses=Cut_Author_List_With):

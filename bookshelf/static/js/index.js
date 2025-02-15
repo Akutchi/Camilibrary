@@ -1,30 +1,6 @@
 const Menu = document.getElementById ("menu");
 Menu.style.fontSize = "0px";
 
-function Move (event) {
-
-    const TagList = document.getElementById ("TagList");
-    const w = TagList.clientWidth;
-    const over = TagList.scrollWidth - w;
-
-    let dx_obj = {}
-    if (event.id == "LeftArrow") {
-        dx_obj = {"comp": x => {return x > 0}, "dx": -100, "born": 0};
-
-    } else if (event.id == "RightArrow") {
-        dx_obj = {"comp": x => {return x < over}, "dx": 100, "born": over};
-    }
-
-    Has_Not_Achieved_Born = dx_obj ["comp"] (TagList.scrollLeft += dx_obj ["dx"]);
-
-    if(Has_Not_Achieved_Born) {
-        TagList.scrollLeft += dx_obj ["dx"];
-
-    } else {
-        TagList.scrollLeft = dx_obj ["born"];
-    }
-}
-
 function ToggleMenu () {
 
     const Menu = document.getElementById ("menu");
@@ -43,4 +19,67 @@ function ToggleMenu () {
         Menu.style.fontSize = "0px";
         Menu.style.visibility = "hidden";
     }
+}
+
+// from https://docs.djangoproject.com/en/3.2/ref/csrf/#how-to-use-it
+function getCookie(name) {
+
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function CreateList (List) {
+
+    const ParentDiv = document.createElement ("div");
+
+    for (Book of List ["info"]) {
+
+        const div = document.createElement ("div");
+
+        const p = document.createElement ("p");
+        p.innerHTML = Book.title;
+
+        const img = document.createElement ("img");
+        img.setAttribute ('src', 'static/' + Book.image);
+
+        div.append (img, p);
+        ParentDiv.append (div);
+    }
+
+    return ParentDiv;
+}
+
+async function BookSearch () {
+
+    inputContent = document.getElementById ("SearchBar").value;
+
+    Req = {
+
+        method  : "POST",
+        headers : {
+            'Content-Type' : "application/json",
+            'Accept' : "application/json",
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body : JSON.stringify (inputContent)
+    }
+
+    const List = await fetch ("http://localhost:8000/search", Req)
+    .then (response => {return response.json ()});
+    document.getElementById ("SearchWrapper").replaceChildren (CreateList (List));
+
 }
