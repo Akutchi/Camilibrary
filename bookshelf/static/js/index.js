@@ -65,6 +65,7 @@ function CreateList (List) {
 
 async function BookSearch () {
 
+    document.getElementById ("SearchWrapper").visibility = "visible";
     inputContent = document.getElementById ("SearchBar").value;
 
     Req = {
@@ -82,4 +83,9 @@ async function BookSearch () {
     .then (response => {return response.json ()});
     document.getElementById ("SearchWrapper").replaceChildren (CreateList (List));
 
+}
+
+function HideSearch () {
+
+    document.getElementById ("SearchWrapper").visibility = "hidden";
 }

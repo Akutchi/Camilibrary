@@ -21,7 +21,7 @@
 
         <c-menu></c-menu>
 
-        <input id="SearchBar" placeholder="search for a book..." onkeyup="BookSearch()" />
+        <input id="SearchBar" placeholder="search for a book..." onkeyup="BookSearch()" onfocusin="BookSearch()" onfocusout="HideSearch()" />
         <div id="SearchWrapper">
         </div>
 
