@@ -165,6 +165,10 @@ When using django in production mode, one could regroup all static data into a
 single folder for easier managment. This allow for django to fetch media in a
 single folder, even for multiple apps that have their own /static folder !
 
+⚠️ Beware ! In bookshelf/static/js/location.js, there is a const variable "prod".
+Please put it to true before doing the below step.
+And do not forget to DEGUB = False ! in library/settings.py
+
 This is the approach I am following, and thus, we still need one final step
 before our configuration is complete. We need to create this global folder.
 Remember, if you're using a venv as described above, you need to use the
