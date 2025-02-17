@@ -75,12 +75,12 @@ async function BookSearch () {
         headers : {
             'Content-Type' : "application/json",
             'Accept' : "application/json",
-            'X-CSRFToken': getCookie('csrftoken')
+            'X-CSRFToken': getCookie ('csrftoken')
         },
         body : JSON.stringify (inputContent)
     }
 
-    const List = await fetch ("http://localhost:8000/search", Req)
+    const List = await fetch (getLocation () + "search", Req)
     .then (response => {return response.json ()});
 
     SearchWrapper.replaceChildren (CreateList (List));

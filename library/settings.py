@@ -25,14 +25,33 @@ SECRET_KEY = 'django-insecure-f)g8)rq&md%&r7369^*=kgi&%45@x@=pi1r^h#1=vyn%1#clpe
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://localhost:8000'
-]
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8000/search'
-]
+ALLOWES_H = []
+ALLOWED_ORG = []
+TRUSTED_ORG = []
+
+def Is_Local (prod_status):
+
+    cleaned_boolean = prod_status.split ("=") [1].strip (" ")[0:-2]
+    return cleaned_boolean == "false"
+
+with open (BASE_DIR.as_posix () + "/bookshelf/static/js/location.js") as f:
+
+    prod_status = f.readline ()
+    if Is_Local (prod_status):
+
+        ALLOWED_H   = ['*']
+        ALLOWED_ORG = ['http://127.0.0.1:8000', 'http://localhost:8000']
+        TRUSTED_ORG = ['http://localhost:8000/search']
+
+    else:
+
+        ALLOWED_H   = ['www.camilibrary.fr']
+        ALLOWED_ORG = ['https://www.camilibrary.fr']
+        TRUSTED_ORG = ['https://www.camilibrary.fr/search']
+
+ALLOWED_HOSTS = ALLOWED_H
+CORS_ALLOWED_ORIGINS = ALLOWED_ORG
+CSRF_TRUSTED_ORIGINS = TRUSTED_ORG
 
 # Application definition
 
