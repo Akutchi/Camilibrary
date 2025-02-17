@@ -1,0 +1,49 @@
+#SearchBar {
+
+    margin-left: 2%;
+
+    width : 226px;
+}
+
+#SearchBook {
+
+    width : 100px;
+
+    text-decoration : underline;
+    color : black;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+}
+
+#SearchWrapper {
+
+    visibility: hidden;
+
+    position: absolute;
+    z-index: 1;
+
+    margin-left: 2%;
+
+    padding : 0.5em;
+
+    border: 1px solid black;
+    background-color: lightskyblue;
+}
+
+#SearchWrapper > div > div {
+
+    display: flex;
+
+    column-gap: 1em;
+
+    margin-bottom: 0.5em;
+}
+
+#SearchWrapper > div > div > img {
+
+    width: 100px;
+    height: 155.5px;
+    object-fit: cover;
+}
