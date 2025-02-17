@@ -22,7 +22,7 @@
 
 #SearchWrapper {
 
-    /*visibility: hidden;*/
+    visibility: hidden;
 
     position: absolute;
     z-index: 1;

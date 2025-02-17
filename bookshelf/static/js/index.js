@@ -3,8 +3,6 @@ Menu.style.fontSize = "0px";
 
 function ToggleMenu () {
 
-    const Menu = document.getElementById ("menu");
-
     if (Menu.style.width == "0rem" || Menu.style.width == "") {
 
         Menu.style.transition = "1s ease-in-out";
@@ -65,7 +63,8 @@ function CreateList (List) {
 
 async function BookSearch () {
 
-    document.getElementById ("SearchWrapper").visibility = "visible";
+    const SearchWrapper = document.getElementById ("SearchWrapper");
+
     inputContent = document.getElementById ("SearchBar").value;
 
     Req = {
@@ -81,11 +80,14 @@ async function BookSearch () {
 
     const List = await fetch ("http://localhost:8000/search", Req)
     .then (response => {return response.json ()});
-    document.getElementById ("SearchWrapper").replaceChildren (CreateList (List));
 
+    SearchWrapper.replaceChildren (CreateList (List));
+    SearchWrapper.style.visibility = "visible";
 }
 
 function HideSearch () {
 
-    document.getElementById ("SearchWrapper").visibility = "hidden";
+    const SearchWrapper = document.getElementById ("SearchWrapper");
+    SearchWrapper.style.visibility = "hidden";
+    console.log ("blablabla");
 }
