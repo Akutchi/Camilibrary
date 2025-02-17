@@ -24,6 +24,7 @@ bring component-based design to django.
 
 - Django 4.2.17 (python -m pip install Django)
 - Cotton 1.5.1 (pip install django-cotton)
+- Django-cors-headers 4.7.0 (pip install django-cors-headers)
 
 # Local
 
