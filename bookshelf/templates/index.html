@@ -8,6 +8,7 @@
         {% load static %}
 
         <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/searchbar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
         <link rel="stylesheet" href="{% static 'css/recent.css' %}" />
         <link rel="stylesheet" href="{% static 'css/tag_system.css' %}" />
@@ -21,8 +22,10 @@
 
         <c-menu></c-menu>
 
-        <input id="SearchBar" placeholder="search for a book..." onkeyup="BookSearch()" onfocusin="BookSearch()" onfocusout="HideSearch()" />
-        <div id="SearchWrapper">
+        <div id="SearchDiv" onfocusin="BookSearch()" onfocusout="HideSearch()">
+            <input id="SearchBar" placeholder="search for a book..." onkeyup="BookSearch()"/>
+            <div id="SearchWrapper">
+            </div>
         </div>
 
         <div class="RecentWrapper">

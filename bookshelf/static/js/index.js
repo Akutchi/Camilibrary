@@ -48,13 +48,15 @@ function CreateList (List) {
 
         const div = document.createElement ("div");
 
-        const p = document.createElement ("p");
-        p.innerHTML = Book.title;
+        const a = document.createElement ("a");
+        a.setAttribute ('href', "/book/" + Book.id);
+        a.setAttribute ('id', 'SearchBook');
+        a.innerHTML = Book.title;
 
         const img = document.createElement ("img");
         img.setAttribute ('src', 'static/' + Book.image);
 
-        div.append (img, p);
+        div.append (img, a);
         ParentDiv.append (div);
     }
 
@@ -87,7 +89,6 @@ async function BookSearch () {
 
 function HideSearch () {
 
-    const SearchWrapper = document.getElementById ("SearchWrapper");
+    const SearchWrapper = document.getElementById ("SearchWrappr");
     SearchWrapper.style.visibility = "hidden";
-    console.log ("blablabla");
 }

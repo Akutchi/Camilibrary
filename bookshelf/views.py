@@ -96,7 +96,11 @@ def offset_index (req, Page_Number):
 
 def search_view (req) :
 
-    placeholder = {"title": "title 1", "image":Book.objects.get (id=1).Image.name}
+    placeholder = {
+        "title" : Book.objects.get (id=1).Title+"rogljegojetgemtgje",
+        "image" : Book.objects.get (id=1).Image.name,
+        "id"    : "1"
+    }
     return JsonResponse ({"info" : [placeholder, placeholder]})
 
 def book_view (req, Book_Number):
