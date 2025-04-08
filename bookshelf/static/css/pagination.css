@@ -2,12 +2,18 @@
 
     margin-left: 2%;
     margin-right: 2%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding-top: 2%;
 
     text-align: center;
 
     background-color: lightskyblue;
+
+  @media screen and (min-width: 769px) {
+    padding-bottom: 1%;
+  }
+  @media screen and (max-width: 768px) {
+    padding-bottom: 3%;
+  }
 }
 
 .PageNumber {

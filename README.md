@@ -33,7 +33,7 @@ folder and run ```python(3) manage.py runserver```
 
 # Production
 
-This part of the doc supposes that you will use caddy and gunicorn to handle
+This part of the doc supposes that you will use caddy and gunicorn to han:dle
 the server-side as it is the infrastructure that I use myself.\
 Big thanks to Thomas Feldmann and chrisadams for their tutorial - [here](https://tfeldmann.de/blog/serving-django-with-caddy/)
 and [here](https://rtl.chrisadams.me.uk/2023/01/til-using-caddy-with-django-apps-instead-of-nginx/) respectively -
