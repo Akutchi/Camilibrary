@@ -20,8 +20,8 @@
     text-wrap: nowrap;
 
   @media screen and (max-width: 768px) {
-    margin-left:0rem;
-  }
+    margin-left: 0rem;
+  } 
 }
 
 /* taken from https://getcssscan.com/css-buttons-examples */

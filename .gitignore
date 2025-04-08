@@ -1,9 +1,12 @@
-./library/__pycache__/*
-./bookshelf/__pycache__/*
-./db.sqlite3
+./library/__pycache__
+./bookshelf/__pycache__
+./bookshelf/fixtures
+./bookshelf/migrations
 ./bookshelf/static/*.jpg
 ./bookshelf/static/*.jpeg
 ./bookshelf/static/*.png
 ./bookshelf/static/*.webp
 ./bookshelf/static/txt/
 ./transfert.sh
+./format_html_commentary.py
+./db.sqlite3
