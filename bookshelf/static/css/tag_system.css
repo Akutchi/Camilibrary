@@ -1,10 +1,15 @@
 #TagSystem {
 
     display: flex;
+
     margin-left: 2.2rem;
     margin-right: 2.8rem;
+    
+    @media screen and (max-width:768px) {
+    margin-left: 1rem;
+    margin-right: -1.8rem;
+  }
 }
-
 
 #TagList {
 
@@ -13,11 +18,10 @@
 
     overflow: scroll;
     text-wrap: nowrap;
-}
 
-.ClearButton {
-
-    height: 2rem;
+  @media screen and (max-width: 768px) {
+    margin-left:0rem;
+  }
 }
 
 /* taken from https://getcssscan.com/css-buttons-examples */
@@ -50,7 +54,22 @@
   left: 5px;
 }
 
+.ClearButton {
+
+    height: 2rem;
+}
+
 .NaviButton {
 
     height: 2.1rem;
 }
+
+#LeftArrow, #RightArrow {
+
+  @media screen and (max-width: 768px) {
+    visibility:hidden;
+  }
+
+}
+
+
