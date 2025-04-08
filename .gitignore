@@ -6,7 +6,8 @@
 ./bookshelf/static/*.jpeg
 ./bookshelf/static/*.png
 ./bookshelf/static/*.webp
-./bookshelf/static/txt/
+./bookshelf/static/txt
 ./transfert.sh
 ./format_html_commentary.py
 ./db.sqlite3
+.session
