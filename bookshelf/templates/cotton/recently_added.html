@@ -1,13 +1,14 @@
 <div class="Recent">
 
     {% load static %}
+
     {% if recent %}
         {% for recent_book in recent %}
 
             <div class="Book">
                 <a href={% url 'book_page' recent_book.id %}>
                     <div class="RecentCover">
-                            <img src={% static recent_book.Image %}>
+                            <img src={% static "imgs/"|add:recent_book.Image %}>
                         <p>{{ recent_book.Description }}</p>
                     </div>
                 </a>

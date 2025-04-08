@@ -8,7 +8,7 @@
             <div class="Book">
                 <div class="BookCover">
                     <a href={% url 'book_page' book.info.pk %}>
-                        <img src="{% static book.info.Image %}">
+                      <img src={% static "imgs/"|add:book.info.Image.name %}> 
                     </a>
                 </div>
 
