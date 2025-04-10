@@ -9,3 +9,4 @@ transfert.sh
 format_html_commentary.py
 db.sqlite3
 .session
+graph.data
