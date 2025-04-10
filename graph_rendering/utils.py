@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from graph_node import Node
+from graph_classes import Node
 
 
 def Load_Data():
@@ -23,7 +23,16 @@ def Load_Data():
 
 def Print_Graph(graph):
     for node in graph:
-        plt.text(node.coords[0], node.coords[1], node.name)
-        plt.plot(node.coords[0], node.coords[1], "ko")
+        plt.text(
+            node.coords[0],
+            node.coords[1],
+            node.name,
+            bbox=dict(facecolor="white", alpha=0.5),
+        )
+
+        for adj in node.adjacents:
+            xs = [node.coords[0], graph[adj].coords[0]]
+            ys = [node.coords[1], graph[adj].coords[1]]
+            plt.plot(xs, ys, "ko-")
 
     plt.show()
