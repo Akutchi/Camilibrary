@@ -1,6 +1,7 @@
-library/__pycache__
 bookshelf/__pycache__
 bookshelf/templatetags/__pycache__
+graph_rendering/__pycache__
+library/__pycache__
 bookshelf/fixtures
 bookshelf/migrations
 bookshelf/static/imgs
@@ -9,4 +10,4 @@ transfert.sh
 format_html_commentary.py
 db.sqlite3
 .session
-graph.data
+graph_rendering/graph.data
