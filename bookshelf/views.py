@@ -142,6 +142,10 @@ def book_view(req, Book_Number):
     return render(req, "book.html", Info)
 
 
+def graph_rendering(req):
+    return render(req, "graph.html")
+
+
 def about(req):
     PATH = BASE_PATH + "/static/txt/Liste_yuri.txt"
 
