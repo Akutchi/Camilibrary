@@ -7,6 +7,7 @@
 
         {% load static %}
         {% load whitespace_character %}
+        {% load add_last %}
         
         <link rel="stylesheet" href="{% static 'css/book.css' %}" />
         <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
@@ -20,7 +21,7 @@
         <div id="BookInfo">
 
             <div id="ImageDiv">
-                <img src="{% static "imgs/"|add:book_info.Image.name %}" />
+                <img src="{% static "imgs/"|add_last:book_info.Image.name %}" />
             </div>
 
             <div id="InfoDiv">

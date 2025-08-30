@@ -16,7 +16,6 @@ class Tag(models.Model):
     def __str__(self):
         return self.TagName
 
-
 class Book(models.Model):
     Image = models.ImageField(upload_to="bookshelf/static/imgs")
     Title = models.CharField(max_length=200, unique=True)
@@ -28,7 +27,6 @@ class Book(models.Model):
 
     def __str__(self):
         return self.Title
-
 
 class Book_Author_Link(models.Model):
     Author_Key = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -50,3 +48,4 @@ class Book_Tag_Link(models.Model):
 
     def __str__(self):
         return self.Book_Key.Title + " -> " + self.Tag_Key.TagName
+
