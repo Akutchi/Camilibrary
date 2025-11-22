@@ -94,7 +94,7 @@ def offset_index(req, Page_Number):
         "pagination": {
             "current": Page_Number,
             "page_list": [p for p in Pagination],
-            "first_ellipses": Page_Number >= 3,
+            "first_ellipses": Page_Number > 3,
             "last_ellipses": Page_Number <= Pages_Count - 3,
             "query": Format_Parameters_For_Template(Tag_List),
         },

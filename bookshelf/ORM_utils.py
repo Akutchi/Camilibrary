@@ -77,13 +77,10 @@ def Filter_Books_With(Tags, Every_Books):
 
 
 def Get_Pagination(Page_Number, Pages_Count):
-    if Pages_Count <= 5:
-        return [p for p in range(1, Pages_Count + 1)]
-
     if Page_Number <= 3:
         return [1, 2, 3, 4, Pages_Count]
 
-    if Page_Number >= Pages_Count - 3:
+    if Page_Number > Pages_Count - 3:
         return [1, Pages_Count - 3, Pages_Count - 2, Pages_Count - 1, Pages_Count]
 
     overflow_negative = lambda i: False if i < 1 else True
