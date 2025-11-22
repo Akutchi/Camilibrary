@@ -113,33 +113,32 @@ def search_view(req):
 
 
 def book_view(req, Book_Number):
-    Books_Count = Book.objects.count()
-    if Book_Number < 1 or Book_Number - 1 > Books_Count:
-        raise Http404("book not found")
 
-    Book_Obj = (
-        Book.objects.prefetch_related("Tags")
-        .prefetch_related("Authors")
-        .get(pk=Book_Number)
-    )
-    Authors = Extract_Authors(Book_Obj)
-    Tags = Extract_Tags(Book_Obj)
+    try:
+        Book_Obj = Book.objects.prefetch_related("Tags").prefetch_related("Authors").get(pk=Book_Number)
+        
+        Authors = Extract_Authors(Book_Obj)
+        Tags = Extract_Tags(Book_Obj)
 
-    Info = {"book_info": Book_Obj, "Authors": Authors, "Tags": Tags}
+        Info = {"book_info": Book_Obj, "Authors": Authors, "Tags": Tags}
 
-    PATH = (
-        BASE_PATH + "/static/txt/" + Book_Obj.Image.name.split(".")[0].lower() + ".html"
-    )
+        PATH = (
+            BASE_PATH + "/static/txt/" + Book_Obj.Image.name.split(".")[0].lower() + ".html"
+        )
 
-    if not os.path.exists(PATH):
-        print("File does not exist")
-        Info["CommentaryText"] = ""
+        if not os.path.exists(PATH):
+            print("File does not exist")
+            Info["CommentaryText"] = ""
 
-    else:
-        templ = open(PATH, "r").read()
-        Info["CommentaryText"] = templ
+        else:
+            templ = open(PATH, "r").read()
+            Info["CommentaryText"] = templ
 
-    return render(req, "book.html", Info)
+        return render(req, "book.html", Info)
+
+    except:
+        raise Http404("book not found");
+
 
 
 def graph_rendering(req):
